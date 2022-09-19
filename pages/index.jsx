@@ -1,6 +1,7 @@
 import Head from "next/head";
 import CardCategorie from "../components/CardCategorie";
 import CardMenu from "../components/CardMenu";
+import Sliders from "../components/Sliders";
 
 export default function Home({ categories, menus }) {
   
@@ -10,6 +11,7 @@ export default function Home({ categories, menus }) {
       <Head>
         <title>Lanayah</title>
       </Head>
+      <Sliders/>
       <h3 className="text-center text-yellow-700 font-bold">Categories</h3>
       <div className=" flex space-x-2 p-2 rounded-sm overflow-x-scroll bg-gray-300">
         {categories.map((cat) => (
