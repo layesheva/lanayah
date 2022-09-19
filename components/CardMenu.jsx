@@ -1,5 +1,6 @@
 import { data } from "autoprefixer";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -52,8 +53,12 @@ const CardMenu = ({ data }) => {
             </p>
           </div>
         </div>
-        <div className={ (loguer ? " " : " hidden ")+" rounded-full font-bold text-white mt-1 text-lg bg-green-600 text-center"}>
-          <button onClick={handleClick}>Acheter</button>
+        
+        <div className=" rounded-full font-bold text-white mt-1 text-lg bg-green-600 text-center">
+        {
+          loguer ? <button onClick={handleClick}>Acheter</button>  : <Link href="/user/login" ><button >Acheter</button></Link>
+        }
+          
         </div>
       </div>
     </>

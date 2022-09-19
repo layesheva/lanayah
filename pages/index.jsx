@@ -36,7 +36,7 @@ export async function getStaticProps() {
   const categories = await getCat.json();
 
   const getMenus = await fetch(
-    `https://www.ifoodapi.isoftsarl.com/api/v1/clients/accueil/menus`
+    `https://www.ifoodapi.isoftsarl.com/api/v1/clients/accueil/restaurants/22`
   );
   const menus = await getMenus.json();
 
