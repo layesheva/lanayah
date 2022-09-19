@@ -35,5 +35,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#Personal token
-# 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
+.gitignore
+
+#Personal token 2022
+# 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
+# to update "gh auth login"
