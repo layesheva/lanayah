@@ -15,7 +15,7 @@ const Sliders = () => {
             </span>
             <img
               src="/assets/sliders/slide1.png"
-              className="absolute flex w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>
@@ -26,7 +26,7 @@ const Sliders = () => {
           >
             <img
               src="/assets/sliders/slide2.png"
-              className="absolute flex w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>
@@ -37,7 +37,7 @@ const Sliders = () => {
           >
             <img
               src="/assets/sliders/slide3.png"
-              className="absolute flex w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
             />
           </div>

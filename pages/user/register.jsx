@@ -4,17 +4,17 @@ import Link from "next/link";
 import { useState } from "react"
 
 const Register = () => {
-  const [user, serUser] = useState({
-    access_token: "",
+  const [user, setUser] = useState({
+    password: "",
     adresse: "",
-    commune: "",
+    commune: "1",
     nom: "",
-    statuts: "",
+    email: "",
     telephone: ""
   })
 
   const handleChange = (e) => {
-    serUser({
+    setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
@@ -23,9 +23,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = { telephone, password };
+    // const data = { telephone, password };
 
-    const res = await axios.post("/auth/register", data).then((res)=>serUser(res.data)).catch((e)=>console.log(e));
+    const res = await axios.post("/auth/register", user).then((res)=>setUser(res.data)).catch((e)=>console.log(e));
 
 
     return(
@@ -51,6 +51,19 @@ const Register = () => {
                         <h2>CONNEXION</h2>
                       </div> */}
                       <form onSubmit={(e) => handleSubmit(e)}>
+                      <div className="relative w-full mb-2">
+                          <div>
+                          <img src="/assets/icon/phone.svg" alt="" className=" pointer-event-none w-6 h-6 absolute mr-2 top-2 left-2 "/>
+                          </div>
+                          <input
+                            type="text"
+                            className="border-0 px-3 py-3 pl-10 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow left-5 focus:outline-none focus:ring w-full"
+                            placeholder="Nom"
+                            style={{ transition: "all .15s ease" }}
+                            name="nom"
+                            onChange={handleChange}
+                          />
+                        </div>
                         <div className="relative w-full mb-2">
                           <div>
                           <img src="/assets/icon/phone.svg" alt="" className=" pointer-event-none w-6 h-6 absolute mr-2 top-2 left-2 "/>
@@ -80,7 +93,7 @@ const Register = () => {
                         </div>
                         <div className="text-center mt-2">
                           <button
-                            className="bg-red-500 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                            className="bg-yellow-700 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                             type="submit"
                             style={{ transition: "all .15s ease" }}
                           >
