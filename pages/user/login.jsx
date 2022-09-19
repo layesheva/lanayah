@@ -91,7 +91,7 @@ const Login = () => {
                         </div>
   
                         <div className="relative w-full mb-3">
-                          <div className=" pointer-event-none w-8 h-8 absolute mr-2 top-1 ">
+                          <div className=" pointer-event-none w-8 h-8 absolute mr-2 top-1 text-yellow-700 ">
                           <img src="/assets/icon/passwd.svg" alt=""  className="pointer-event-none w-6 h-6 absolute mr-2 top-2 left-2"/>
                           </div>
                           <input
@@ -123,7 +123,7 @@ const Login = () => {
   
                         <div className="text-center mt-2">
                           <button
-                            className="bg-red-500 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                            className="bg-yellow-700 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                             type="submit"
                             style={{ transition: "all .15s ease" }}
                           >
