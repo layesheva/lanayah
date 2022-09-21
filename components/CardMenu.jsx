@@ -54,7 +54,7 @@ const CardMenu = ({ data }) => {
           </div>
         </div>
         
-        <div className=" rounded-full font-bold text-white mt-1 text-lg bg-green-600 text-center">
+        <div className="rounded-full font-bold text-white mt-1 text-lg bg-green-600 text-center mb-0 align-bottom">
         {
           loguer ? <button onClick={handleClick}>Acheter</button>  : <Link href="/user/login" ><button >Acheter</button></Link>
         }
