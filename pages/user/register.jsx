@@ -5,12 +5,8 @@ import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-nextjs-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faLocation,
-  faLocationArrow,
   faLocationPin,
-  faLocationPinLock,
   faLock,
-  faMapLocation,
   faPhone,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";

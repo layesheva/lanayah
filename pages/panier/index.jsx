@@ -9,10 +9,14 @@ import {
   faMapLocation,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
+import { toast, ToastContainer } from "react-nextjs-toast";
 
 const index = () => {
   const [panier, setPanier] = useState();
   const router = useRouter();
+  const [rep, setRep] = useState({
+    error: "",
+  });
   const [data, setData] = useState({
     type: "total",
     adresse_id: 3,
@@ -61,7 +65,7 @@ const index = () => {
       .then((res) => {
         console.log("le status code est = " + res.status);
         if (res.status === 200) {
-          toast.notify(response.data, {
+          toast.notify(`Commande enregistree avec succes !`, {
             duration: 5,
             type: "success",
             title: "Information",
@@ -70,13 +74,16 @@ const index = () => {
         }
       })
       .catch((e) => {
-        setRep(e.response.data);
-        console.log(rep);
-        toast.notify(rep.error, {
-          duration: 5,
-          type: "error",
-          title: "Information",
-        });
+        console.log(e);
+        if(e.response.data){
+          setRep(e.response.data);
+          console.log(rep);
+          toast.notify("Une erreur s'est produit code "+e.response.status, {
+            duration: 5,
+            type: "error",
+            title: "Information",
+          });
+        }
       });
   };
 
@@ -89,6 +96,7 @@ const index = () => {
               <div className="w-full p-4 px-5 py-5">
                 <div className="md:grid md:grid-cols-3 gap-2 ">
                   <div className="col-span-2 p-1">
+                  <ToastContainer />
                     <h1 className="text-xl font-medium text-center ">Panier</h1>
                     <button
                       onClick={handleClick}
@@ -133,7 +141,7 @@ const index = () => {
           </div>
           <div className="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
             <form onSubmit={(e) => handleSubmit(e)}>
-              <div className="relative w-full mb-3">
+              <div className="relative p-2">
                 <div className="pointer-event-none w-8 h-8 absolute mr-2 top-1 text-yellow-700 ">
                   <i className="pointer-event-none w-6 h-6 absolute mr-2 top-2 left-2 text-yellow-700">
                     <FontAwesomeIcon icon={faMapLocation} />
@@ -142,7 +150,6 @@ const index = () => {
                 <select
                   name="commune"
                   id="commune"
-                  onChange={handleChange}
                   className="border-0 px-3 py-3 pl-10 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:ring w-full"
                 >
                   <option value="Kaloum">Kaloum</option>
@@ -152,7 +159,7 @@ const index = () => {
                   <option value="Ratoto">Ratoto</option>
                 </select>
               </div>
-              <div className="relative w-full mb-3">
+              <div className="relative p-2">
                 <div className="pointer-event-none w-8 h-8 absolute mr-2 top-1 text-yellow-700 ">
                   <i className="pointer-event-none w-6 h-6 absolute mr-2 top-2 left-2 text-yellow-700">
                     <FontAwesomeIcon icon={faHomeUser} />
@@ -169,7 +176,7 @@ const index = () => {
                 />
               </div>
 
-              <div className="text-center mt-2">
+              <div className="text-center ">
                 <button
                   className="bg-yellow-700 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                   type="submit"
