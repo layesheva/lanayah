@@ -10,13 +10,13 @@ export default function Home({ categories, menus }) {
         <title>Lanayah</title>
       </Head>
       {/* <Sliders/> */}
-      <div className="flex h-auto max-h-80">
+      {/* <div className="flex h-auto max-h-80">
         <img
           src="/assets/sliders/slide1.png"
           className="w-full h-50"
           alt="..."
         />
-      </div>
+      </div> */}
       <h3 className="text-center text-yellow-700 font-bold">Categories</h3>
       <div className=" flex space-x-2 p-2 rounded-sm overflow-x-scroll bg-gray-300">
         {categories.map((cat) => (
