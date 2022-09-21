@@ -70,7 +70,9 @@ const index = () => {
             type: "success",
             title: "Information",
           });
-          router.push("/");
+          setTimeout(() => {
+            router.push("/");
+          }, 5);
         }
       })
       .catch((e) => {
