@@ -72,7 +72,7 @@ const index = () => {
           });
           setTimeout(() => {
             router.push("/");
-          }, 5);
+          }, 5000);
         }
       })
       .catch((e) => {

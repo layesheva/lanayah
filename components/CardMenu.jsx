@@ -54,11 +54,10 @@ const CardMenu = ({ data }) => {
           </div>
         </div>
         
-        <div className="rounded-full font-bold text-white mt-1 text-lg bg-green-600 text-center mb-0 align-bottom">
+        <div className="rounded-full font-bold text-white mt-1 mb-0 text-lg bg-green-600 text-center content-end">
         {
-          loguer ? <button onClick={handleClick}>Acheter</button>  : <Link href="/user/login" ><button >Acheter</button></Link>
+          loguer ? <button className="" onClick={handleClick}>Acheter</button>  : <Link href="/user/login" ><button >Acheter</button></Link>
         }
-          
         </div>
       </div>
     </>
