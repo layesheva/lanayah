@@ -22,7 +22,7 @@ const index = () => {
     adresse_id: 3,
     quartier: "",
     commune: "",
-    montant_livraison: 10000,
+    montant_livraison: 25000,
   });
 
   axios.interceptors.request.use(
@@ -194,7 +194,7 @@ const index = () => {
           </div>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
-              <h2 className="text-xl font-medium text-center pt-2 ">
+              <h2 className="text-xl font-medium text-center">
                 Adresse de livraison
               </h2>
               <div className="relative p-2">
