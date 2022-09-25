@@ -33,11 +33,10 @@ const CardPanier = ({ data }) => {
         <div className="flex justify-center items-center">
           <div className="pr-8 flex">
             {/* <span className="font-semibold">-</span> */}
-            <input
+            <label
               type="text"
               className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2"
-              value={data.quantite}
-            />
+            >{data.quantite}</label>
             {/* <span className="font-semibold">+</span> */}
           </div>
 

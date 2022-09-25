@@ -55,6 +55,40 @@ const index = () => {
       ...data,
       [e.target.name]: e.target.value,
     });
+
+    //transport calcul
+    console.log(e.target.value);
+    switch (e.target.value) {
+      case "dixinn":
+        setData({
+          ...data,
+          montant_livraison: 20000,
+        });
+        break;
+        case "matam":
+        setData({
+          ...data,
+          montant_livraison: 20000,
+        });
+        break;
+      case "kaloum":
+        setData({
+          ...data,
+          montant_livraison: 25000,
+        });
+        break;
+      case "matoto":
+        setData({
+          ...data,
+          montant_livraison: 15000,
+        });
+        break;
+      default:
+        setData({
+          ...data,
+          montant_livraison: 10000,
+        });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -77,10 +111,10 @@ const index = () => {
       })
       .catch((e) => {
         console.log(e);
-        if(e.response.data){
+        if (e.response.data) {
           setRep(e.response.data);
           console.log(rep);
-          toast.notify("Une erreur s'est produit code "+e.response.status, {
+          toast.notify("Une erreur s'est produit code " + e.response.status, {
             duration: 5,
             type: "error",
             title: "Information",
@@ -98,7 +132,7 @@ const index = () => {
               <div className="w-full p-4 px-5 py-5">
                 <div className="md:grid md:grid-cols-3 gap-2 ">
                   <div className="col-span-2 p-1">
-                  <ToastContainer />
+                    <ToastContainer />
                     <h1 className="text-xl font-medium text-center ">Panier</h1>
                     <button
                       onClick={handleClick}
@@ -121,7 +155,7 @@ const index = () => {
                         <i className="text-sm pr-2">
                           <FontAwesomeIcon icon={faArrowLeft} />
                         </i>
-                        <span className="text-md  font-medium text-blue-500">
+                        <span className="text-md  font-medium text-yellow-700">
                           <a onClick={() => router.back()}>Continue Shopping</a>
                         </span>
                       </div>
@@ -141,8 +175,11 @@ const index = () => {
               </div>
             </div>
           </div>
-          <div className="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
-            <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <div className="max-w-md mx-auto bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
+              <h2 className="text-xl font-medium text-center pt-2 ">
+                Adresse de livraison
+              </h2>
               <div className="relative p-2">
                 <div className="pointer-event-none w-8 h-8 absolute mr-2 top-1 text-yellow-700 ">
                   <i className="pointer-event-none w-6 h-6 absolute mr-2 top-2 left-2 text-yellow-700">
@@ -152,13 +189,14 @@ const index = () => {
                 <select
                   name="commune"
                   id="commune"
+                  onChange={handleChange}
                   className="border-0 px-3 py-3 pl-10 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:ring w-full"
                 >
-                  <option value="Kaloum">Kaloum</option>
-                  <option value="Dixinn">Dixinn</option>
-                  <option value="Matam">Matam</option>
-                  <option value="Matoto">Matoto</option>
-                  <option value="Ratoto">Ratoto</option>
+                  <option value="kaloum">Kaloum</option>
+                  <option value="dixinn">Dixinn</option>
+                  <option value="matam">Matam</option>
+                  <option value="matoto">Matoto</option>
+                  <option value="ratoto">Ratoto</option>
                 </select>
               </div>
               <div className="relative p-2">
@@ -173,22 +211,49 @@ const index = () => {
                   placeholder="Quartier"
                   style={{ transition: "all .15s ease" }}
                   name={"quartier"}
-                  value={data.quartier}
                   onChange={handleChange}
+                  required
                 />
               </div>
+              <div className="flex justify-between items-center p-3">
+                <div className="flex items-center">
+                  <span className="text-md  font-medium text-yellow-700">
+                    <label>Transport</label>
+                  </span>
+                </div>
 
-              <div className="text-center ">
-                <button
-                  className="bg-yellow-700 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                  type="submit"
-                  style={{ transition: "all .15s ease" }}
-                >
-                  VALIDER LA COMMANDE
-                </button>
+                <div className="flex justify-center items-end">
+                  <span className="text-lg font-bold text-gray-800 ">
+                    {data.montant_livraison} Gnf
+                  </span>
+                </div>
               </div>
-            </form>
-          </div>
+            </div>
+            <div className="max-w-md mx-auto mt-2 py-4 px-4 bg-gray-100 shadow-lg rounded-lg  md:max-w-5xl">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center">
+                  <span className="text-md  font-semibold text-yellow-700">
+                    <label>Facture total</label>
+                  </span>
+                </div>
+
+                <div className="flex justify-center items-end">
+                  <span className="text-lg font-bold text-gray-800 ">
+                    {total + data.montant_livraison} Gnf
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mx-auto px-5 mt-3">
+              <button
+                className="bg-yellow-700 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                type="submit"
+                style={{ transition: "all .15s ease" }}
+              >
+                VALIDER LA COMMANDE
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </>
