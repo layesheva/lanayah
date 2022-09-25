@@ -38,7 +38,13 @@ const index = () => {
   useEffect(() => {
     axios
       .get("/pannier/mon-pannier")
-      .then((res) => setPanier(res.data))
+      .then((res) => {
+        if(res.data.length !== 0){
+          setPanier(res.data);
+        }else{
+          panierVide();
+        }
+      })
       .catch((e) => console.log(e));
   }, []);
 
@@ -65,7 +71,7 @@ const index = () => {
           montant_livraison: 20000,
         });
         break;
-        case "matam":
+      case "matam":
         setData({
           ...data,
           montant_livraison: 20000,
@@ -106,7 +112,7 @@ const index = () => {
           });
           setTimeout(() => {
             router.push("/");
-          }, 5000);
+          }, 3000);
         }
       })
       .catch((e) => {
@@ -121,6 +127,17 @@ const index = () => {
           });
         }
       });
+  };
+
+  const panierVide = () => {
+    toast.notify(`Votre panier est vide`, {
+      duration: 5,
+      type: "success",
+      title: "Information",
+    });
+    setTimeout(() => {
+      router.push("/");
+    }, 2000);
   };
 
   return (
