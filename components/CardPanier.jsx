@@ -13,6 +13,18 @@ const CardPanier = ({ data }) => {
     router.reload()
   }
 
+  async function addQuantite(e,idProduit){
+    e.preventDefault();
+
+    router.reload()
+  }
+
+  async function removeQuantite(e,idProduit){
+    e.preventDefault();
+
+    router.reload()
+  }
+
   return (
     <>
       <div className="flex justify-between items-center pt-6 mt-6 border-t">
