@@ -89,7 +89,7 @@ const CardMenu = ({ data }) => {
         ) : (
           <div className="flex flex-row rounded-full font-bold text-white mt-1 mb-0 text-lg border-green-600 border-2 bg-green-600 text-center">
             <form onSubmit={(e) => handleSubmit(e)}>
-              <input className="text-black rounded-full text-center w-20" name={"quantite"} placeholder="Quantite" value={menu.quantite} onChange={handleChange}/>
+              <input className="text-black rounded-full text-center w-20" name={"quantite"} placeholder="Quantite" value={menu.quantite} onChange={handleChange} required/>
               <button className="w-10 text-center" type="submit">Ok</button>
             </form>
           </div>
