@@ -265,7 +265,7 @@ const index = () => {
 
             <div className="text-center mx-auto">
               <button
-                className="bg-yellow-700 text-white active:bg-gray-700 text-md font-bold uppercase rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                className="bg-yellow-700 text-white  text-md font-bold uppercase  mr-1 mb-1 w-full"
                 type="submit"
                 style={{ transition: "all .15s ease" }}
               >
