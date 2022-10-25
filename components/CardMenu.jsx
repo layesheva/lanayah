@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-nextjs-toast";
 
-const CardMenu = ({ data }) => {
+const CardMenu = ({ data, setPanierVide, setPanierMontant, setPanierQuantite }) => {
   const [loguer, setLoguer] = useState(false);
   const [buying, setBuying] = useState(false);
 
@@ -46,9 +46,17 @@ const CardMenu = ({ data }) => {
     e.preventDefault();
     await axios
       .post("/pannier/add", menu)
-      .then((response) => setRep(response.status))
+      .then((response) => {
+        setRep(response.status)
+        if(response.status === 200){
+          setPanierVide(false)
+          setPanierMontant(response.data.montant)
+          setPanierQuantite(response.data.quantite)
+        }
+      })
       .catch((errer) => console.log(errer));
-    router.push("/panier");
+      
+    // router.push("/panier");
     // toast.notify("Ajouter au panier avec succes", {
     //   duration: 5,
     //   type: "success",

@@ -1,9 +1,16 @@
 import Head from "next/head";
+import Link from "next/link";
+import { useState } from "react";
 import CardCategorie from "../components/CardCategorie";
 import CardMenu from "../components/CardMenu";
 import Sliders from "../components/Sliders";
 
 export default function Home({ categories, menus }) {
+  // const [panierVide , setPanierVide] = useState(true)
+  const [panierQuantite, setPanierQuantite] = useState(0)
+  const [panierMontant, setPanierMontant] = useState(0)
+  const [panierVide, setPanierVide] = useState(true)
+
   return (
     <>
       <Head>
@@ -27,10 +34,18 @@ export default function Home({ categories, menus }) {
       <div className="bg-gray-200">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 xl:grid-cols-8 p-2">
           {menus.map((menu) => (
-            <CardMenu key={menu.id} data={menu} />
+            <CardMenu key={menu.id} data={menu} setPanierVide={setPanierVide} setPanierQuantite={setPanierQuantite} setPanierMontant={setPanierMontant}/>
           ))}
         </div>
       </div>
+      <div className="flex flex-col items-center">
+      <Link href="/panier">
+      <button className={ ( !panierVide ? "fixed " : "hidden ") + "bottom-3 w-50 rounded-lg p-1 text-white bg-green-700 font-semibold"}>
+        <h3>COMMANDER</h3><nb/>
+        <p className="font-normal"> {panierQuantite}menus {panierMontant} Gnf</p>
+      </button>
+      </Link>
+    </div>
     </>
   );
 }
