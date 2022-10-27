@@ -40,7 +40,7 @@ export default function Home({ categories, menus }) {
       </div>
       <div className="flex flex-col items-center">
       <Link href="/panier">
-      <button className={ ( !panierVide ? "fixed " : "hidden ") + "bottom-3 w-50 rounded-lg p-1 text-white bg-green-700 font-semibold"}>
+      <button className={ ( !panierVide ? "fixed " : "hidden ") + "bottom-3 w-50 rounded-lg p-1 text-white bg-yellow-700 font-semibold"}>
         <h3>COMMANDEZ</h3><nb/>
         <p className="font-normal"> {panierQuantite}menus {panierMontant} Gnf</p>
       </button>
